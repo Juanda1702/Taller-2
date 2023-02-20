@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 
+
 public class Restaurante 
 {
 	private ArrayList<Ingrediente> ingredientes;
@@ -26,7 +27,28 @@ public class Restaurante
 	
 	public void iniciarPedido(String nombreCliente, String direccionCliente) 
 	{
-		String[] pedido = input("Que desea ordenar").split(",");
+		this.pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
+		String[] pedidoProductos = input("Que desea ordenar(nombre completo de la opcion)").split(",");
+		
+
+		
+		for (int i = 0; i < pedidoProductos.length; i++) {
+			for (int j = 0; j < menuBase.size(); j++) {
+				if (pedidoProductos[i] == menuBase.get(j).getNombre()){
+					pedidoEnCurso.agregarProducto(menuBase.get(j));					
+					}
+				else {
+					for (int k = 0; k < combos.size(); k++) {
+						if (pedidoProductos[i] == combos.get(i).getNombre()) {
+							pedidoEnCurso.agregarProducto(combos.get(k));
+						} 
+							
+						}
+					}
+				
+			}
+			}
+		
 		
 		
 		
@@ -34,12 +56,12 @@ public class Restaurante
 	
 	public void cerrarYGuardarPedido() 
 	{
-		
+		pedidos.add(pedidoEnCurso);
 	}
 	
 	public Pedido getPedidoEnCurso() 
 	{
-		return null;
+		return pedidoEnCurso;
 	}
 	
 	public ArrayList<ProductoMenu> getMenuBase() 
@@ -135,19 +157,19 @@ public class Restaurante
 				Combo nuevo = new Combo(comida, des);
 				
 				
+				
 				int j = 2;
 				
 				for (int i = 0; i < menuBase.size() && j!=combo.length; i++) 
 					{
 					if  (combo[j].equals(menuBase.get(i).getNombre())) 
 					{
-						nuevo.agregarItemACombo(nuevo, menuBase.get(i));
+						nuevo.agregarItemACombo(menuBase.get(i));
 						j++;
 						i=0;
 						
 						
 					}
-						
 					}
 				combos.add(nuevo);
 				linea = br.readLine();

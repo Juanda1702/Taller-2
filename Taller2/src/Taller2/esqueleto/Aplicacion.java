@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-
 public class Aplicacion 
 {
 	private Restaurante restaurante;
@@ -52,9 +51,9 @@ public class Aplicacion
 					ejecutarMenu();
 					
 				else if (opcion_seleccionada == 2)
-					;
+					restaurante.getPedidoEnCurso();
 				else if (opcion_seleccionada == 3)
-					;
+					restaurante.cerrarYGuardarPedido();
 				else if (opcion_seleccionada == 4)
 					;
 				else if (opcion_seleccionada == 5)
@@ -90,8 +89,8 @@ public class Aplicacion
 		System.out.println("\nCombos\n");
 		for (int i = 0; i < listaCombos.size(); i++)
 		{
-			Combo actualCombo = listaCombos.get(i);
-			System.out.println(actualCombo.getNombre()+": "+actualCombo.getPrecio());
+			
+			System.out.println(listaCombos.get(i).getNombre()+": "+listaCombos.get(i).getPrecio());
 			
 		}	
 		

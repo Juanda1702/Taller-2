@@ -28,11 +28,12 @@ public class Pedido
 	
 	public void agregarProducto(Producto nuevoItem) 
 	{
-		
+		itemsPedido.add(nuevoItem);
 	}
 	
 	private int getPrecioNetoPedido() 
 	{
+		
 		return 0;
 	}
 	
